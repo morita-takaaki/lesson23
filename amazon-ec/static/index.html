@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>最小ECサイト</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 会員登録・ログイン・ログアウト -->
+    <p>
+        <span id="auth-area"></span>
+        <a href="cart.html">カートを見る</a> |
+        <a href="orders.html">注文履歴を見る</a>
+    </p>
+
+    <!-- 商品一覧 -->
+    <h1>商品一覧</h1>
+
+    <div id="message" class="message"></div>
+
+    <div id="product-list">
+        <p>商品を読み込んでいます...</p>
+    </div>
+
+    <!-- 第20回までの商品・注文処理 -->
+    <script src="app.js"></script>
+
+    <!-- 第21回の顧客機能 -->
+    <script>
+        // ログイン状態を確認する
+        async function checkLogin() {
+            const area = document.getElementById("auth-area");
+
+            try {
+                const response = await fetch("/api/me");
+
+                if (response.ok) {
+                    // ログイン中
+                    const user = await response.json();
+
+                    area.textContent =
+                        user.username + " さん | ";
+
+                    const button =
+                        document.createElement("button");
+
+                    button.textContent = "ログアウト";
+                    button.addEventListener("click", logout);
+
+                    area.appendChild(button);
+                    area.append(" | ");
+
+                } else {
+                    // 未ログイン
+                    area.innerHTML =
+                        '<a href="register.html">会員登録</a> | ' +
+                        '<a href="login.html">ログイン</a> | ';
+                }
+
+            } catch (error) {
+                area.textContent =
+                    "ログイン状態を確認できません | ";
+            }
+        }
+
+        // ログアウト処理
+        async function logout() {
+            try {
+                const response = await fetch("/api/logout", {
+                    method: "POST"
+                });
+
+                if (!response.ok) {
+                    throw new Error("ログアウト失敗");
+                }
+
+                alert("ログアウトしました");
+
+                // 商品一覧を再表示
+                location.reload();
+
+            } catch (error) {
+                alert("ログアウトできませんでした");
+            }
+        }
+
+        // 画面を開いたときにログイン状態を確認
+        checkLogin();
+    </script>
+
+</body>
+</html>

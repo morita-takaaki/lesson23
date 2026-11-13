@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お支払い - 最小ECサイト</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <p>
+        <a href="index.html">← 商品一覧に戻る</a> | 
+        <a href="cart.html">カートを見る</a>
+    </p>
+    <h1>お支払い</h1>
+    <div id="payment-container" style="max-width: 400px; margin-top: 20px;">
+        <h2 id="amount-display">支払金額：0円</h2>
+        <form id="payment-form" style="margin-top: 20px;">
+            <h3>支払方法</h3>
+            <div style="margin-bottom: 10px;">
+                <label>
+                    <input type="radio" name="method" value="credit" checked> クレジットカード
+                </label>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <label>
+                    <input type="radio" name="method" value="bank"> 銀行振込
+                </label>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <label>
+                    <input type="radio" name="method" value="cod"> 代金引換
+                </label>
+            </div>
+            <button type="submit" id="pay-btn">決済する</button>
+        </form>
+        <div id="message" class="message"></div>
+    </div>
+    <script src="payment.js"></script>
+</body>
+</html>

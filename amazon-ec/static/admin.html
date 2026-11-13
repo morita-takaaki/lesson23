@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>商品管理</title><link rel="stylesheet" href="style.css"></head>
+<body><p><a href="index.html">商品一覧に戻る</a></p><h1>管理者専用：商品管理</h1>
+<p id="admin-status">権限を確認しています...</p>
+<section id="admin-panel" hidden><h2 id="form-title">商品登録</h2>
+<form id="product-form" class="admin-form"><input id="edit-id" type="hidden">
+<label>商品名 <input id="name" required maxlength="200"></label>
+<label>価格（円） <input id="price" type="number" required min="0" max="1000000000"></label>
+<label>在庫数量（表示・管理用） <input id="stock" type="number" required min="0" max="1000000000"></label>
+<label>商品画像（JPEG・PNG・WebP、5MB以下） <input id="image" type="file" accept="image/jpeg,image/png,image/webp"></label>
+<p id="image-current"></p><button type="submit">保存する</button><button type="button" id="reset-btn">新規登録に戻る</button></form>
+<h2>商品一覧</h2><table class="admin-table"><thead><tr><th>ID</th><th>画像</th><th>商品名</th><th>価格</th><th>在庫</th><th>状態</th><th>操作</th></tr></thead><tbody id="products-body"></tbody></table></section>
+<script src="admin.js"></script></body></html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品詳細 - 最小ECサイト</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <p>
+        <a href="index.html">← 商品一覧に戻る</a> | 
+        <a href="cart.html">カートを見る</a>
+    </p>
+    
+    <div id="product-detail" class="product-card">
+        <img id="product-image" class="product-image" alt="商品画像" hidden>
+        <h1 id="product-name">読み込み中...</h1>
+        <p class="price" id="product-price"></p>
+        <div class="order-form">
+            <label for="quantity">数量:</label>
+            <input type="number" id="quantity" value="1" min="1" style="width: 50px;">
+            <button id="order-btn">注文する</button>
+            <button id="add-to-cart-btn">カートに入れる</button>
+        </div>
+    </div>
+    
+    <div id="message" class="message"></div>
+    <script src="detail.js"></script>
+</body>
+</html>
